@@ -18,4 +18,5 @@ def multiplikativ_inverse(a,b):
 
 
 if __name__ == '__main__':
-    print(ggT(64, 4336))
+    print(ggT(27, 85))
+
