@@ -1,25 +1,19 @@
 from random import Random
 
-def MaxHeapify():
+
+def max_heapify():
     pass
-
-
 
 
 A = [i for i in range(13)]
 Random().shuffle(A)
 
-l = len(A)-1
+p = len(A) - 1
 
-i = l
+i = p
 
-if i%2 ==1 or A[l]>A[l-1]:
-    i = l
-else:
-    i = l-1
+# p gerade und der Bruder größer)
+if p % 2 == 0 and A[p] < A[p - 1]:
+    i = p - 1
 
-
-
-
-
-
+j = (p+1)//2
