@@ -1,3 +1,5 @@
+import ggT
+
 start = ord("A")
 ende = ord("Z") + 1
 dif = ende - start
@@ -12,8 +14,17 @@ def phi(P, Q):
 
 
 wort = "MY_NAME_IS_BOB"
-
-print(ord("_"), ord(" "), ord("a"), ord("Z"))
-p, q = 53, 59
-
+e = 107
+p, q = 37, 71
+PHI = phi(p, q)
 N = p * q
+
+# wähle e < phi(p, q) wobei e Teiler fremd zu N
+
+while True:
+    if ggT.ggT(e, N) == 1:
+        break
+    e += 1
+
+print("e", e)
+ggT.multiplikativ_inverse(e, PHI, [])
