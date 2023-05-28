@@ -1,4 +1,4 @@
-def ggT(a, b): # a=3 b = 31
+def ggT(a, b):  # a=3 b = 31
     gr = max((a, b))
     kl = min((a, b))
 
@@ -12,18 +12,37 @@ def s_t(a, b, ggt):
     pass
 
 
-def multiplikativ_inverse(a, b, history):
-    gr = max((a, b))
-    kl = min((a, b))
+def erweiterter_euklid(a, b, history=None):
+    if history is None:
+        gr = max((a, b))
+        kl = min((a, b))
+        return erweiterter_euklid(gr, kl, [[0, 0], [0, 1], None])
 
-    q = gr // kl
-    r = gr % kl
-    print(f"{gr} = {q} * {kl} + {r}")
+    q = a // b
+    r = a % b
+
+    temp = True
+    if history[2] is None:
+        history[2] = [1, -q]
+        temp = False
+
+    a1, a2 = history[0]
+    history[0] = history[1].copy()
+    history[1] = history[2].copy()
+
+    if temp:
+        history[2][0] *= -q
+        history[2][1] *= -q
+
+    history[2][0] += a1
+    history[2][1] += a2
     if r == 0:
-        return kl, gr, 0
-    else:
-        (r1, q1, p1) = multiplikativ_inverse(kl, r, history)
-        return r1, q
+        return b, history[1]
+    print(f"{a}={q}*{b}+{r} | {r}={a}-{q}*{b} | s={history[2][0]} t={history[2][1]}")
+    return erweiterter_euklid(b, r, history)
+
 
 if __name__ == '__main__':
-    print(ggT(15, 11))
+    a, b = 111, 100,
+    ggt, (s, t) = erweiterter_euklid(a, b)
+    print(f"{ggt} = {s}*{a} + {t}*{b} = {s * a + t * b}")
