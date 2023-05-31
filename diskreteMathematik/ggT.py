@@ -4,7 +4,7 @@ def ggT(a, b):  # a=3 b = 31
 
     q = gr // kl
     r = gr % kl
-    print(f"{gr} = {q} * {kl} + {r}")
+    #print(f"{gr} = {q} * {kl} + {r}")
     return kl if r == 0 else ggT(kl, r)
 
 
