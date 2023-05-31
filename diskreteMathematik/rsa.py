@@ -65,7 +65,7 @@ _, (__, d) = ggT.erweiterter_euklid(PHI, e)
 print("e", e,"N",N,"phi", PHI, "d", d)
 
 wort = "MY NAME IS BOB"
-nums = str2nums(wort,2)
+nums = str2nums(wort, 1)
 rec = nums2str(nums)
 
 print(nums, rec, wort)
