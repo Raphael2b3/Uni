@@ -10,3 +10,5 @@ Z ist der ring der durch die Restklassen mulitplikation aufkommt
 """
 
 print(msg)
+
+print("Wolfram Alpha q = Z_n additive inverse 7")

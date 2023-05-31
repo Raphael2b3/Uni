@@ -1,43 +1,62 @@
 start = ord("A")
-ende = ord("Z") + 1
-dif = ende - start
+ende = ord("Z")
+dif = ende - start + 1  # modul
 
 print(start, ende, dif)
 
-def ceasar_verschluesseln(wort, schluessel):
-    out = ""
-    for w in wort:
-        o = keyvalue(w)
 
-        z = (o + schluessel) % dif + start
-        out += chr(z)
-    return out
-
-
-def ceasar_entschluesseln(wort, schluessel):
-    return ceasar_verschluesseln(wort, -schluessel)
-
-def keyvalue(c):
+def key_value(c):
     return ord(c) - start
 
 
-start = ord("A")
-ende = ord("Z") + 1
-dif = ende - start
+def value_key(k):
+    return chr((k % dif) + start)
 
-def vigenere(wort, schluessel):
-    le = len(schluessel)
+
+def ceasar(wort, schluessel):
+    print(f'Cäser Verschlüsselung: {wort}, {schluessel}')
     out = ""
-    i = 0
+    debug = ""
+    debug2 = ""
     for w in wort:
-        k = keyvalue(w)
-        lv = keyvalue(schluessel[i % le])
-        out += chr((k + lv)%dif + start)
-        i += 1
+        o = key_value(w)
+        debug += f"{w} {o} "
+        z = value_key(o+schluessel)
+
+        debug2 += f"{ord(z)-start} {z} "
+        out += z
+    print(debug)
+    print(debug2)
+    print(out)
     return out
 
 
-a = ceasar_verschluesseln("AVEYRON", 11)
+def ceasar_inverse(wort, schluessel):
+    return ceasar(wort, -schluessel)
+
+
+def vigenere(wort, schluessel):
+    print(f"Vigenere: {wort}, {schluessel}")
+    le = len(schluessel)
+    out = ""
+    debug = ""
+    debug2 = ""
+    i = 0
+    for w in wort:
+        k = key_value(w)
+        lv = key_value(schluessel[i % le])
+        debug += f"{w} {k}+{lv} "
+        z = value_key(k+lv)
+        out += z
+        debug2 += f"{z} {k + lv}%{dif} {(k + lv )%dif}  "
+        i += 1
+    print(debug)
+    print(debug2)
+    print(out)
+    return out
+
+
+a = ceasar("AVEYRON", 11)
 print(a)
-a = Vigenere("AVEYRON","FRZ")
+a = vigenere("AVEYRON", "FRZ")
 print(a)
