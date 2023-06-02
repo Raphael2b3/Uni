@@ -1,16 +1,5 @@
-start = ord("A")
-ende = ord("Z")
-dif = ende - start + 1  # modul
-
-print(start, ende, dif)
-
-
-def key_value(c):
-    return ord(c) - start
-
-
-def value_key(k):
-    return chr((k % dif) + start)
+from decoding import *
+import decoding
 
 
 def ceasar(wort, schluessel):
@@ -21,9 +10,9 @@ def ceasar(wort, schluessel):
     for w in wort:
         o = key_value(w)
         debug += f"{w} {o} "
-        z = value_key(o+schluessel)
+        z = value_key(o + schluessel)
 
-        debug2 += f"{ord(z)-start} {z} "
+        debug2 += f"{ord(z) - start} {z} "
         out += z
     print(debug)
     print(debug2)
@@ -46,9 +35,9 @@ def vigenere(wort, schluessel):
         k = key_value(w)
         lv = key_value(schluessel[i % le])
         debug += f"{w} {k}+{lv} "
-        z = value_key(k+lv)
+        z = value_key(k + lv)
         out += z
-        debug2 += f"{z} {k + lv}%{dif} {(k + lv )%dif}  "
+        debug2 += f"{z} {k + lv}%{dif} {(k + lv) % dif}  "
         i += 1
     print(debug)
     print(debug2)
@@ -56,7 +45,7 @@ def vigenere(wort, schluessel):
     return out
 
 
-a = ceasar("AVEYRON", 11)
-print(a)
-a = vigenere("AVEYRON", "FRZ")
-print(a)
+decoding.set(ord("A"), ord("Z"))
+
+if __name__ == '__main__':
+    pass
