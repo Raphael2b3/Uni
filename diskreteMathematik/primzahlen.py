@@ -64,6 +64,7 @@ def fermatPrim(n, a):
 
 def millerrabintest(n, a):
     """
+    - wähle a aus der menge der zu n teilerfremden zwischen [2,n-1]
     - zerlege n-1 = m*2^k mit k maximal (d.h. m ungerade)
 
     - betrachte Folge:

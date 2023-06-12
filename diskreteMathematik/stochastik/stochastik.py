@@ -1,3 +1,12 @@
+"""
+Binomial verteilung
+
+Exponential verteilung
+
+
+
+"""
+
 import matplotlib.pyplot as mpp
 
 
@@ -38,3 +47,14 @@ class VersuchMitZurückLegen:
 print("Possion Verteilung")
 
 print("Wahrscheinlichkeitsdichtefunktion")
+
+
+def häfuigkeit(liste):
+    out = {}
+    for i in liste:
+        if not i in out.keys():
+            out[i] = 1
+        out[i] += 1
+    return out
+
+
