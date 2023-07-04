@@ -45,7 +45,32 @@ def vigenere(wort, schluessel):
     return out
 
 
+def vigenere_inverse(wort, schluessel):
+    print(f"Vigenere: {wort}, {schluessel}")
+    le = len(schluessel)
+    out = ""
+    debug = ""
+    debug2 = ""
+    i = 0
+    for w in wort:
+        k = key_value(w)
+        lv = key_value(schluessel[i % le])
+        debug += f"{w} {k}-{lv} "
+        z = value_key(k - lv)
+        out += z
+        debug2 += f"{z} {k + lv}%{dif} {(k + lv) % dif}  "
+        i += 1
+    print(debug)
+    print(debug2)
+    print(out)
+    return out
+
+
+
 decoding.set(ord("A"), ord("Z"))
 
 if __name__ == '__main__':
-    pass
+    p = vigenere("AMEISE","ADRIAN")
+    print(p)
+    vigenere_inverse(p,"NUDELN")
+    vigenere("NUDELN","NVSMHE")

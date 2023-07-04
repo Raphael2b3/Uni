@@ -1,4 +1,4 @@
-start = ord("A")
+start = ord("A")  # A = 0
 ende = ord("z")
 dif = ende - start + 1
 
