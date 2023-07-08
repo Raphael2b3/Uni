@@ -3,12 +3,17 @@ from decoding import *
 import decoding
 
 
-def phi(P, Q):
+def phi(n, primfaktorzerl):
+    for p in primfaktorzerl:
+        n*=(1-1/p)
+    return n
+
+def phiprime(P, Q):
     return (P - 1) * (Q - 1)
 
 def generate_keys(p=79,q=139):
 
-    PHI = phi(p, q)
+    PHI = phiprime(p, q)
     N = p * q
     e = 29
     # wähle e < phi(p, q) wobei e Teiler fremd zu N
