@@ -32,6 +32,6 @@ def erweiterter_euklid(a, b, history=None):  # ! a >= b
 
 
 if __name__ == '__main__':
-    a, b = 11, 4
+    a, b = 2760, 13
     ggt, (s, t) = erweiterter_euklid(a, b)
     print(f"{ggt} = {s}*{a} + {t}*{b} = {s * a + t * b}")

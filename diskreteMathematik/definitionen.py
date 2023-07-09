@@ -41,3 +41,27 @@ k1*k2 in K sind. Erfüllt K zusammen mit + und * die Axiome I-V, so nennt man (K
 Ein Element heißt Einheit, wenn es ein b in Zn gibt, sodass a*b=1 gilt bzw. a*b===1 mod n in Kongruenzschreibweise.
 Man sagt dass b multiplikativ inverse zu a ist
 """
+
+
+"""
+Kryptographie ist der Versuch eine Nachricht sicher über einen unsicheren Kanal zu versenden.
+
+Definition Kryptosystem:
+Ein Tripel (P,C,K) heißt Kryptosystem, wobei
+ P eine endliche Menge von Klartexten ist (plain texts),
+ C eine endliche Menge von Geheimtexten (cipher texts),
+ K eine endliche Menge von Schlüsseln (keys)
+ist, wenn  für jedes Schlüsselpaar ke,kd in K eine Chiffrierungsregel (encryption rule) eke: P -> C und eine Dechiffrierungsregel 
+(decryption rule) dkd: C->P existiert, sodass für ein KLartext m in P (message) die Bedingung dkd(eke(m))=m erfüllt ist.
+
+
+Kerckhoffs Prinzip
+Nach dem Prinzip von Auguste Kerckhoff (1835-1903) beruht die Sicherheit eines Verschlüsselungsverfahrens auf der 
+Geheimhaltung des (mindestens eines) Schlüssels (private key) zwischen Sender und Empfänger bzw. mit anderen Worten:
+Ein Geheimtext darf ohne Kenntnis des Schlüssels nicht effizient dechiffrierbar sein.
+
+Vorteile: es müssen nur schlüssel geändert werden, algorithmen sind schwieriger geheimzuhalten als schlüssel
+
+Das Kryptosystem (P,C,K) gilt als perfekt sicher, falls Kenntnis des Geheimtextes c in C nichts über die gesendete Message 
+m in P verrät, also P(m|c) = P(m) gilt.
+"""

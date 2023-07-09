@@ -34,7 +34,7 @@ def nums2str(nums):
 
 
 def str2num(st):
-    out = 1
+    out = 0
     for w in st:
         o = key_value(w)
         out *= 10 ** 2
@@ -44,7 +44,7 @@ def str2num(st):
 
 def num2str(num):
     out = ""
-    while num != 1:
+    for i in range(2):
         tmp = num // 10 ** 2
         tmp *= 10 ** 2
         z = num - tmp
