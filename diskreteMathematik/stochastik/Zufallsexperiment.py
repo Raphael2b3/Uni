@@ -5,19 +5,39 @@ class Zufallsexperiment:
     elementarWS = {}
     elementarereignisse = []
 
-    def __init__(self, e_ereignisee, elementarWS, p=None):
+    def __init__(self, e_ereignisee, elementarWS, p=None, zufallsgröße=None):
         self.elementarereignisse = e_ereignisee
         self.elementarWS = elementarWS
         if p:
-            self.WSvon = p
+            self.elemWSvon = p
+        if zufallsgröße:
+            self.zufallsgröße = zufallsgröße
 
-    def WSvon(self, w): # w ist elementar
-        return self.elementarWS.get(w,0)  # if doesn't exist: 0
+    def zufallsgröße(self):
+        print("Keine Zufallsgröße geseted")
 
-    def WSvonSumme(self,A):
+    def punktWSzufallsGröße(self, zufallGr):
+        out = 0
+        for eEregnis in self.elementarWS:
+            if self.zufallsgröße(eEregnis) == zufallGr:
+                out += self.elementarWS[eEregnis]
+        return out
+
+    def verteilungsFunktionZufallsGröße(self, zufallGr):
+        out = 0
+        for z in range(zufallGr + 1):
+            pi = self.punktWSzufallsGröße(z)
+            print(f"X({z})=", pi)
+            out += pi
+        return out
+
+    def elemWSvon(self, w):  # w ist elementar
+        return self.elementarWS.get(w, 0)  # if doesn't exist: 0
+
+    def WSvonEreignisse(self, A):
         p = 0
         for a in A:
-            p += self.WSvon(a)
+            p += self.elemWSvon(a)
         return p
 
     def mehrfachziehenEreignis(self, A):
@@ -25,10 +45,8 @@ class Zufallsexperiment:
         for aa in A:
             p = 1
             for a in aa:
-                p *= self.WSvon(a)
-
+                p *= self.elemWSvon(a)
             out += p
-
         return out
 
 
@@ -38,15 +56,13 @@ class LaplaceExperiment(Zufallsexperiment):
 
     """
 
-
     def __init__(self, ereignisse):
         self.elementarereignisse = ereignisse
-        self.generateElemWS(ereignisse) # side Effekt!!!
+        self.generateElemWS(ereignisse)  # side Effekt!!!
 
-
-    def generateElemWS(self,ereignisse):
+    def generateElemWS(self, ereignisse):
         for ereignis in ereignisse:
-            self.elementarWS[ereignis] = self.WSvon(ereignis) +1/len(ereignisse)
+            self.elementarWS[ereignis] = self.elemWSvon(ereignis) + 1 / len(ereignisse)
 
 
 class LaplaceOhneZurücklegen(LaplaceExperiment):
@@ -58,7 +74,7 @@ class LaplaceOhneZurücklegen(LaplaceExperiment):
         super().__init__(ereignisse)
         self.currentEreignisse = ereignisse[:]
 
-    def weglegen(self,a):
+    def weglegen(self, a):
         self.currentEreignisse.remove(a)
         self.generateElemWS(self.currentEreignisse)
 
@@ -71,26 +87,43 @@ class LaplaceOhneZurücklegen(LaplaceExperiment):
         for aa in A:
             p = 1
             for a in aa:
-                p *= self.WSvon(a)
+                p *= self.elemWSvon(a)
                 self.weglegen(a)
             out += p
             self.reset()
         return out
 
 
+def convert_2_NmalZiehenZufallsExperiment(züge, experiment: Zufallsexperiment):
+    ereignisse = experiment.elementarereignisse
+    elementarWS = experiment.elementarWS
+    WSs = {}
+
+    def permutateereeignisse(n, currentWS=1, p_ereigniss=""):
+        if n == 0:
+            WSs[p_ereigniss] = currentWS
+            return
+        for e in ereignisse:
+            permutateereeignisse(n - 1, currentWS * elementarWS[e], p_ereigniss + e)
+
+    permutateereeignisse(züge)
+
+    return Zufallsexperiment(e_ereignisee=list(WSs.keys()), elementarWS=WSs, zufallsgröße=experiment.zufallsgröße)
+
+
 if __name__ == '__main__':
     import Mengen
 
-    würfelexperiment = LaplaceExperiment(range(1,7))
-    A1 = [ *([5,i] for i in range(1,7)), *([6,i] for i in range(1,7))]  # min eine 5 im ersten wurf
 
-    A2 = [*([i, 5] for i in range(1, 7)), *([i, 6] for i in range(1, 7))]  # min eine 5 im ersten wurf
+    def kRG3ZufallsGröße(ereig):
+        # anzahl gezogener Grüner Kugeln
+        out = 0
+        for i in ereig:
+            if i == "g":
+                out += 1
+        return out
 
-    A1andA2 = Mengen.schnitt(A1,A2)
-    p1 = würfelexperiment.mehrfachziehenEreigniss(A1)
-    p2 = würfelexperiment.mehrfachziehenEreigniss(A2)
-    p3 = würfelexperiment.mehrfachziehenEreigniss(A1andA2)
 
-    #mind eine 5
-    sus = p1+p2- p3
-    print(sus)
+    kugelRG = Zufallsexperiment(["r", "g"], elementarWS={"r": 7 / 10, "g": 3 / 10}, zufallsgröße=kRG3ZufallsGröße)
+    kugelRG_3mal = convert_2_NmalZiehenZufallsExperiment(3, kugelRG)
+    kugelRG_3mal.verteilungsFunktionZufallsGröße(3)

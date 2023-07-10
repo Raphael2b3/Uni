@@ -34,4 +34,19 @@ gegeben
 Stochastisch unabhängig:
 Gilt P(A ^ B) = P(A)*P(B) so heißen A und B stochastisch unabhängig
 
+
+Definition Zufallsgröße
+Eine Abbildung X:Omega-> Reelle Zahlen, die jedem Elementarereignis w des Ergebnisraums Omega eine reelle Zahl x duch
+  x = X(w) zuordnet, heißt Zufallsgröße bzw. Zufallsvariable, und x nennt man Realisierung von X.
+
+  Kann x dabei nur endlich viele oder abzählbar unendlich viele Werte annehmen, nennen wir X eine diskrete Zufallsgröße
+
+Definition Verteilungsfunktion:
+Die Funktion Fx: R-> [0,1], die für eine vorgegebene reelle Zahl x angibt wie groß die Wahrscheinlichkeit ist, dass
+die Zufallsgröße X Werte annimmt, die kleiner oder gleich x sind, heißt Verteilungsfunktion von X,
+   Fx(x)= P(X<=x)
+Seien xi die Realisierung einer diskreten Zufallsgröße X mit pi = P(X=xi). Dann heißst durch
+    fx(x)=P(X=x)= falls x==xi:pi sonst:0
+  definierte Funktion auch Wahrscheinlichkeitsfunktion von X.
+
 """
