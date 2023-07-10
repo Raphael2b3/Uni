@@ -1,5 +1,4 @@
 from decoding import *
-import decoding
 
 
 def ceasar(wort, schluessel):
@@ -65,9 +64,6 @@ def vigenere_inverse(wort, schluessel):
     print(out)
     return out
 
-
-
-decoding.set(ord("A"), ord("Z"))
 
 if __name__ == '__main__':
     p = vigenere("AMEISE","ADRIAN")

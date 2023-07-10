@@ -9,7 +9,6 @@ class Zerlegung:
         self.potenz = potenz
 
 
-# Euklidischem Algorithmus
 def zerlegung_mit(zahl, zerlgr):
     potenz = 0
     while True:

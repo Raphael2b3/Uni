@@ -7,7 +7,6 @@ Exponential verteilung
 
 """
 
-import matplotlib.pyplot as mpp
 
 
 class Kugel:
