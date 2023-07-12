@@ -49,4 +49,65 @@ Seien xi die Realisierung einer diskreten Zufallsgröße X mit pi = P(X=xi). Dan
     fx(x)=P(X=x)= falls x==xi:pi sonst:0
   definierte Funktion auch Wahrscheinlichkeitsfunktion von X.
 
+Kurz Definition Erwartungswert
+Der Erwartungswert von X ist der über alle Realisierungen xi von X gemittelte Wert, wobei mit den jeweiligen
+Punktwarscheinlichkeiten pi gewichtet wird
+
+kurz Definition Varianz
+Die Varianz von X zeigt an, wie stark die Zufallsgröße X im Durchschnitt von ihrem Erwartungswert abweicht
+
+
+Sei X eine Diskrete Zufallsgröße mit Wahrschenlichkeitsfunktino fx. Dann heißen
+  - mü_x= u = E(X)= Sum(mit i in N: xi*fx(xi)) Erwartungswert (auch Mittelwert) von X, wobei die absolute Konvergenz
+  der rechts stehenden Reihe vorausgesetzt werden muss.
+
+  - sigma_x^2 = ox^2 = Var(X) = Sum für i in N [ (xi-ux)^2 * fx(xi) ] die Varianz von X.
+            Schneller Var(x) = E(X^2) - mü_x^2
+
+  - sigma_x = ox = sqrt(Var(X)) die Standartabweichung von X.
+
+
+Ist Y=g(X) eine von der Zufallsgröße X (mit Wahrscheinlichkeitsfunktion fx) abhängige Funktion, so ist der Erwartungswert
+von Y duch E(Y)= für i in N sum(g(xi)*fx(xi))
+
+
+Definition Verteilungen
+
+Gleichverteilung
+Eine Zufallsgröße X, bei der jede Realisierung x1,...,xn mit der Wahrscheinlichkeit 1/n eintritt, heißt gleichverteilt.
+Ihre Wahrscheinlichkeits- und Verteilungsfunktion sind gemäß
+ fx(x) = P(X=x) = 1/n falls x=xi für i = 1 bist n sonst 0
+ Fx(x) = P(X<=x) = len(X[:i])/n
+
+Binomialverteilung
+Ein Bernoulli-Experiment mit den beiden sich gegenseitig ausschließenden Ergebnissen A und Â werden n-Fach ausgeführt.
+Dann genügt die Zufallsgröße X, die die Anzahl der Versuche kennzeichnet, in denen A eintritt, der Binomialverteilung.
+Ihre Wahrscheinlichkeits- und Verteilungsfunktion sind
+
+f(x) = P(X=x) = (x aus N)* p^x * (1-p)^(n-x) falls x=0,1,2,...,n sonst 0
+F(x) = P(X<=x) = floor(x) * f(x)
+
+und man nennt n und p die Parameter der Binomialverteilung.
+
+
+
+Poisson-Verteilung
+sigma^2 = n*p*(1-p)
+mü = n * p
+
+Für Parameter lambda >0 heißt die Verteilung der Zufallsgröße X mit Wahrscheinlichkeits- und Verteilungsfunktion
+ fx(x) = P(X=x) = (lambda)^x/x! * e^-lambda wenn x in N
+
+ Fx(x) = P(X<=x) = e^-lambda * sum k=0 bis floor(x) (lambda^k /k!  )
+
+ lambda = sigma^2 = mü
+
+
+
+
+
+Normalverteilung
+sigma^2 = n*p*(1-p)
+mü = n * p
+
 """
