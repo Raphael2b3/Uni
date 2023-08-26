@@ -14,7 +14,7 @@ def phiprime(P, Q):
 
 
 def exp_mod(base, exponent, mod):  # for big numbers , but basicly the same as (base ** exponent) % mod
-    import gdi.numberConverter as gdi
+    import gdi.konvertierung as gdi
     out = 1
     bin = gdi.dez2bin(exponent)
     print(exponent, "=")
