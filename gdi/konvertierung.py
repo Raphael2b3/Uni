@@ -35,7 +35,7 @@ def schriftlich_n2dez(nums, n=2):
     i = len(nums) - 1
     for num in nums:
         out += num * n ** i
-        print("+",num, "*", n, "^", i, end=" ")
+        print("+", num, "*", n, "^", i, end=" ")
         i -= 1
     print("\n =", out)
     return out
@@ -45,11 +45,24 @@ def schriftlich_n2dez_hornerschema(nums, n=2):
     out = nums[0]
     print("(...(", end=f"{nums[0]}*{n})*")
     for num in nums[1:]:
-
-        print(n,"+", num, end=")* ")
-        out = out*n+num
+        print(n, "+", num, end=")* ")
+        out = out * n + num
     print("1\n =", out)
     return out
+
+
+def bin2hex(nums):
+    r = schriftlich_dez2n(bin2dez(nums), 16)
+    print("bin2hex ", nums, "to", r)
+
+    return r
+
+
+def hex2bin(nums):
+    r = schriftlich_dez2n(schriftlich_n2dez(nums, 16), 2)
+    print("hex2bin ", nums, "to", r)
+    return r
+
 
 if __name__ == '__main__':
     basis = 2
