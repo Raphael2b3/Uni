@@ -7,7 +7,6 @@ def a():
 
     def z(a, b, c):
         return int(x(a, b, c) != y(a, b, c))
-
     return x, y, z
 
 
@@ -19,6 +18,7 @@ def b(x, y, z):
                 print(a, b, c,"|", x(a, b, c), y(a, b, c), z(a, b, c))
 
 def c():
+    #https://kmio.de/logikrechner.html
     print("kv diagramm")
 
 if __name__ == '__main__':

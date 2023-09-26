@@ -20,5 +20,5 @@ def Hammingabstand_code(code):
 
 def informationsgehalt(wahrsch):
     r = -math.log(wahrsch/100,2)
-    print(r)
+    print(r, "formel -log(wahrsch/100,basis:2)")
     return r

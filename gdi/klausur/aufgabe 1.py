@@ -2,7 +2,7 @@ import gdi.konvertierung as kon
 
 BASIS = 16
 def a():
-    matrikelnummer = 102324
+    matrikelnummer = 82832
     result = kon.schriftlich_dez2n(matrikelnummer, BASIS)
     print(result)
     return result
@@ -26,12 +26,17 @@ def c():
 def d(basis=13, stellen=3): # höchste zahl in basis
     out = 0
     for i in range(stellen):
-        out += (basis-1)*13**(stellen-i)
-        print((basis-1),"*",basis,"^",(stellen-i))
+        out += (basis-1)*13**(i)
+        print((basis-1),"*",basis,"^",(i), "+")
     print(out)
     return out
 
-def e(nums):
+def e():
+    zahlen = [[[8,0],9],[[4,2],21],[[4,2],18]]
+
+    for zahl in zahlen:
+        kon.schriftlich_n2dez(zahl[0],zahl[1])
+
     print("""
     
     MSB Betrachten

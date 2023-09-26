@@ -36,6 +36,7 @@ def schriftlich_n2dez(nums, n=2):
     for num in nums:
         out += num * n ** i
         print("+", num, "*", n, "^", i, end=" ")
+        print("=    /*",out,"*/")
         i -= 1
     print("\n =", out)
     return out
