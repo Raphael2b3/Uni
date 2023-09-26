@@ -24,3 +24,4 @@ def c():
 if __name__ == '__main__':
     x, y, z = a()
     b(x, y, z)
+    c()

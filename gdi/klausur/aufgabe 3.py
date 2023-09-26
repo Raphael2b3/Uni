@@ -29,3 +29,8 @@ def c():
     Unicode-Zeichen außerhalb der BMP (d. h. U+10000 bis U+10FFFF)
     D83EDD14
     """)
+
+if __name__ == '__main__':
+    a()
+    b()
+    c()

@@ -13,3 +13,4 @@ def b():
     print("Masken vergleich mit verundung 0b1000")
 if __name__ == '__main__':
     a()
+    b()
