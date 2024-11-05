@@ -27,9 +27,6 @@ class Binomial(Zufallsexperiment.Zufallsexperiment):
 
 if __name__ == '__main__':
 
-
-
-    exp = Binomial(züge=39,WS_für_positiv=1/365)
-    exp.standartabweichung_sigma()
-    exp.verteilFunkZufallsGrößeAb(2)
-
+    exp = Binomial(züge=5,WS_für_positiv=0.8)
+    a = exp.punktWSzufallsGröße(4)
+    print(a)

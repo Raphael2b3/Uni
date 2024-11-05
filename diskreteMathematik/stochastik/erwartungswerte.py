@@ -31,5 +31,17 @@ def standartabweichung_sigma(verteilung):
 
 
 if __name__ == '__main__':
-    F(8.5, {0: 4 / 5, 3: 0.1, 8: 1 / 20, 11: 1 / 20})
+    a = 6/343
+    def fff(x):
+        return a*(-(x**3)/3 - 3*x**2 + 10*x + 275)
+    verteilung = {}
+    def px(x):
+        delta = 0 if x < -5 else 1 if x < 3 else 0
+        return fff(x) - fff(x-delta)
+    for i in range(-5, 3):
+        verteilung[i] = a*(-(i**3)/3 - 3*i**2 + 10*i + 275)
+    F(8.5, verteilung)
+
+    print(erwartungswert_mü(verteilung))
+
     standartabweichung_sigma([7.74 ,9.16, 4.95, 6.61 ,6.28 ,8.59 ,5.26 ,6.47])

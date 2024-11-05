@@ -1,5 +1,3 @@
-from _distutils_hack import override
-
 
 class Zufallsexperiment:
     elementarWS = {}
@@ -7,7 +5,7 @@ class Zufallsexperiment:
 
     def __init__(self, e_ereignisee=None, elementarWS=None, p=None, zufallsgröße=None, max_zufallsgr=1):
         self.elementarereignisse = e_ereignisee
-        self.elementarWS = elementarWS
+        self.elementarWS = elementarWS if elementarWS else {}
         self.max_zufallsgr = max_zufallsgr
         if p:
             self.elemWSvon = p
@@ -58,10 +56,13 @@ class Zufallsexperiment:
 
     def mehrfachziehenEreignis(self, A):
         out = 0
+        print("A", A)
         for aa in A:
+            print("aa", aa)
             p = 1
             for a in aa:
                 p *= self.elemWSvon(a)
+                print("p", p)
             out += p
         return out
 
@@ -151,43 +152,7 @@ def convert_2_NmalZiehenZufallsExperiment(züge, experiment: Zufallsexperiment):
 
 
 if __name__ == '__main__':
-    import Mengen
+    ps = [0.25216,0.37511,0.37273]
 
-
-    def kRG3ZufallsGröße(ereig):
-        # anzahl gezogener Grüner Kugeln
-        out = 0
-        for i in ereig:
-            if i == "g":
-                out += 1
-        return out
-
-
-    kugelRG = Zufallsexperiment(["n", "g"], elementarWS={"n": 364 / 365, "g": 1 / 365}, zufallsgröße=kRG3ZufallsGröße)
-    kugelRG_3mal = convert_2_NmalZiehenZufallsExperiment(50, kugelRG)
-    kugelRG_3mal.verteilFunkZufallsGrößeBis(50)
-
-    kugelRG_3mal.erwartungswert_mü()
-    kugelRG_3mal.varianz_sigmaQuadrat()
-    kugelRG_3mal.standartabweichung_sigma()
-
-    input()
-
-
-    def mindestEine5(ereig):
-        out = 0
-        for e in ereig:
-            if e == "5" or e == "6":
-                out += 1
-        return out
-
-
-    würfelExperiment = Zufallsexperiment(["1", "2", "3", "4", "5", "6"], None, p=lambda x: 1 / 6,
-                                         zufallsgröße=mindestEine5)
-
-    würfel4mal = convert_2_NmalZiehenZufallsExperiment(4, würfelExperiment)
-
-    erge = würfel4mal.verteilFunkZufallsGrößeAb(2)
-
-    print(erge)
-    würfel4mal.standartabweichung_sigma()
+    out = ps[0]+ ps[1]
+    print(out)
