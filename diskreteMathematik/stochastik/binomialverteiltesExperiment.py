@@ -24,7 +24,6 @@ class Binomial(Zufallsexperiment.Zufallsexperiment):
         return out
 
 
-
 if __name__ == '__main__':
 
     exp = Binomial(züge=5,WS_für_positiv=0.8)
