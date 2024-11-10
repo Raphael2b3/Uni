@@ -1,6 +1,6 @@
 # game of life
 import random
-
+import matplotlib.pyplot as plt
 
 class GameOfLife:
 
@@ -18,7 +18,11 @@ class GameOfLife:
                 y = random.randint(0, self.Y - 1)
                 self.board[y][x] = 1
         print("Initial Board")
-        self.print_board()
+        self.visualize()
+
+    def visualize(self):
+        plt.imshow(self.board, cmap='gray')
+        plt.show()
 
     def print_board(self):
         for i in range(self.Y):
@@ -28,14 +32,9 @@ class GameOfLife:
         print()
 
     def count_neighbours(self, x, y):
-        count = 0
-        for i in range(-1, 2):
-            for j in range(-1, 2):
-                if i == 0 and j == 0:
-                    continue
-                if x + i >= 0 and x + i < self.X and y + j >= 0 and y + j < self.Y:
-                    count += self.board[x + i][y + j]
-        return count
+
+        return sum([self.board[i][j] for i in range(max(x - 1,0), min(x + 2,self.X)) for j in range(min(y - 1,0), y + 2)])
+
 
     def next_generation(self):
         new_board = [[0 for _ in range(self.X)] for _ in range(self.Y)]
@@ -51,7 +50,7 @@ class GameOfLife:
                     if count == 3:
                         new_board[i][j] = 1
         self.board = new_board
-        self.print_board()
+        self.visualize()
 
     def run(self, n):
         for i in range(n):
@@ -61,6 +60,6 @@ class GameOfLife:
 
 
 if __name__ == '__main__':
-    game = GameOfLife(1, 1)
-    game.run(5)
+    game = GameOfLife(4, 4)
+
 
